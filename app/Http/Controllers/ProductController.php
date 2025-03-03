@@ -8,10 +8,32 @@ use App\Http\Requests\SaveProductRequest;
 
 class ProductController extends Controller
 {
-    public function index () {
-        return view('products.index', [
-            'products' => Product::orderBy('created_at')->paginate(3)
-        ]);
+    public function index(Request $request) {
+        $query = Product::query();
+        
+        $product = new Product();
+        $searchableFields = $product->getFillable();
+
+        if ($request->has('search') && $request->search != '') {
+            $searchTerm = $request->search;
+            $searchField = $request->search_field ?? 'all';
+            
+            if ($searchField == 'all') {
+                $query->where(function($q) use ($searchTerm, $searchableFields) {
+                    foreach ($searchableFields as $field) {
+                        $q->orWhere($field, 'like', "%{$searchTerm}%");
+                    }
+                });
+            } elseif (in_array($searchField, $searchableFields)) {
+                $query->where($searchField, 'like', "%{$searchTerm}%");
+            }
+        }
+        
+        $products = $query->orderBy('created_at')->paginate(3);
+        
+        $products->appends($request->only(['search', 'search_field']));
+        
+        return view('products.index', compact('products'));
     }
 
     public function create(Product $product) {
