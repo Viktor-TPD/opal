@@ -1,39 +1,59 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
-Route::view('/', 'home');
+Route::view('/', 'home')
+    ->middleware('auth')
+    ->name('home');
 
-Route::resource('categories', CategoryController::class);
-// php artisan route:list
-// TO SEE THE ROUTES OF CATEGORIES
+Route::get('/register', [AuthController::class, 'showRegister'])
+    ->name('show.register');
 
-Route::controller(ProductController::class)
-    ->prefix('products')
-    ->name('products.')
-    ->group(function () {
+Route::get('/login', [AuthController::class, 'showLogin'])
+    ->name('show.login');
 
-    Route::get('/', [ProductController::class, 'index'])
-        ->name('index');
+Route::post('/register', [AuthController::class, 'register'])
+    ->name('register');
 
-    Route::get('/create', [ProductController::class, 'create'])
-        ->name('create');
+Route::post('/login', [AuthController::class, 'login'])
+    ->name('login');
 
-    Route::post('/store', [ProductController::class,  'store'])
-        ->name('store');
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->name('logout')
+    ->middleware('auth');
 
-    Route::get('/{product}', [ProductController::class, 'show'])
-        ->name('show');
+Route::middleware('auth')->group(function () {
+    Route::resource('categories', CategoryController::class);
+    // php artisan route:list
+    // TO SEE THE ROUTES OF CATEGORIES
 
-    Route::get('/{product}/edit', [ProductController::class, 'edit'])
-        ->name('edit');
+    Route::controller(ProductController::class)
+        ->prefix('products')
+        ->name('products.')
+        ->group(function () {
 
-    Route::patch('/{product}', [ProductController::class, 'update'])
-        ->name('update');
+            Route::get('/', [ProductController::class, 'index'])
+                ->name('index');
 
-    Route::delete('/{product}', [ProductController::class, 'destroy'])
-        ->name('destroy');
+            Route::get('/create', [ProductController::class, 'create'])
+                ->name('create');
+
+            Route::post('/store', [ProductController::class,  'store'])
+                ->name('store');
+
+            Route::get('/{product}', [ProductController::class, 'show'])
+                ->name('show');
+
+            Route::get('/{product}/edit', [ProductController::class, 'edit'])
+                ->name('edit');
+
+            Route::patch('/{product}', [ProductController::class, 'update'])
+                ->name('update');
+
+            Route::delete('/{product}', [ProductController::class, 'destroy'])
+                ->name('destroy');
+        });
 });
-
