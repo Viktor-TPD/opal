@@ -6,7 +6,7 @@
 
 <form method="post" action="{{ route('products.store') }}">
 
-<x-products.form :product="$product" />
+<x-products.form :product="$product" :categories="$categories"/>
 
 </form>
 

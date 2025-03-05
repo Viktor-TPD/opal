@@ -6,9 +6,19 @@
 <textarea name="description" 
           id="description">{{ old('description', $product->description ?? '') }}</textarea>
 
-<label for="size">Size</label>
-<input type="text" name="size" id="size" 
-value="{{ old('size', $product->size ?? '') }}">
+<label for="price">Price</label>
+<input type="text" name="price" id="price" 
+value="${{ old('price', $product->price ?? '') }}">
+
+<label for="category_id">Category</label>
+<select name="category_id" id="category_id">
+    <option value="">-- Select Category --</option>
+    @foreach($categories as $category)
+        <option value="{{ $category->id }}" {{ (old('category_id', $product->category_id) == $category->id) ? 'selected' : '' }}>
+            {{ $category->name }}
+        </option>
+    @endforeach
+</select>
 
 <button>Save</button>
 <br>

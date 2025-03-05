@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 use App\Http\Requests\SaveProductRequest;
 
 class ProductController extends Controller
@@ -29,7 +30,7 @@ class ProductController extends Controller
             }
         }
         //WATCH OUT FOR HARD-CODED VALUE HERE @todo
-        $products = $query->orderBy('created_at')->paginate(3);
+        $products = $query->orderBy('created_at')->paginate(10);
         
         $products->appends($request->only(['search', 'search_field']));
         
@@ -37,11 +38,11 @@ class ProductController extends Controller
     }
 
     public function create(Product $product) {
-        return view('products.create', compact('product'));
+        $categories = Category::all();
+        return view('products.create', compact('product', 'categories'));
     }
 
     public function store(SaveProductRequest $request) {
-
         $product = Product::create($request->validated());
 
         return redirect()->route('products.show', $product)
@@ -49,12 +50,12 @@ class ProductController extends Controller
     }
 
     public function show(Product $product) {
-
         return view('products.show', compact('product'));
     }
 
     public function edit(Product $product) {
-        return view('products.edit', compact('product'));
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories'));
     }
 
     public function update(SaveProductRequest $request, Product $product) {

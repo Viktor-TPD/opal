@@ -19,7 +19,7 @@ class CategoryFactory extends Factory
         public function definition(): array
     {
         return [
-            'name' => fake()->safeColorName() . " " . fake()->word(),
+            'name' => ucfirst(fake()->safeColorName()) . " " . ucfirst(fake()->word()),
             'description' => fake()->sentence(),
             'created_at' => now(),
             'updated_at' => now(),
