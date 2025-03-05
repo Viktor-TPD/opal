@@ -28,7 +28,7 @@ class ProductController extends Controller
                 $query->where($searchField, 'like', "%{$searchTerm}%");
             }
         }
-        
+        //WATCH OUT FOR HARD-CODED VALUE HERE @todo
         $products = $query->orderBy('created_at')->paginate(3);
         
         $products->appends($request->only(['search', 'search_field']));

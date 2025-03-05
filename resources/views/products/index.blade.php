@@ -39,7 +39,7 @@
 
     @endforeach
 
-    {{ $products->links('vendor/pagination/simple-default') }}
+    {{ $products->links('vendor/pagination/bootstrap-4') }}
 
 @else
     <p>No products found.</p>
