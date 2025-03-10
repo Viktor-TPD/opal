@@ -1,0 +1,44 @@
+body {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(29, 40, 90);
+    padding: 20px;
+}
+
+nav h1 {
+    margin: 0;
+}
+
+nav span {
+    font-weight: 600;
+    color: white;
+}
+
+nav .authenticated {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.linkButton {
+    width: 100px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    background: rgb(11, 14, 27);
+    border: none;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
