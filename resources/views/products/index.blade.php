@@ -2,9 +2,6 @@
 
     <h1>Products</h1>
 
-
-
-
     <a href="{{ route('home')}}">Home</a>
 
     <a class="linkButton" href="{{ route('products.create') }}">New Product</a>
