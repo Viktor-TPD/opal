@@ -10,15 +10,16 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-            public function run(): void
+    public function run(): void
     {
         //ADMIN
         User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@123.com',
             'password' => 123123123,
+            'role' => 'admin',
         ]);
-        
+
         //TEST USER
         User::factory()->create([
             'name' => 'Test User',
