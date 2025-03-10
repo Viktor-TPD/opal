@@ -1,17 +1,17 @@
 <x-layout>
 
-    <h1>Products</h1>
+    <h1>Categories</h1>
 
     <a href="{{ route('home')}}">Home</a>
     
-    <a href="{{ route('products.create') }}">New Product</a>
+    <a href="{{ route('categories.create') }}">New Category</a>
     
-    <form action="{{ route('products.index') }}" method="GET" class="search-form">
+    <form action="{{ route('categories.index') }}" method="GET" class="search-form">
         <div>
             <select name="search_field">
                 <option value="all" {{ request('search_field') == 'all' ? 'selected' : '' }}>All Fields</option>
                 
-                @foreach((new \App\Models\Product())->getFillable() as $field)
+                @foreach((new \App\Models\Category())->getFillable() as $field)
                     <option value="{{ $field }}" {{ request('search_field') == $field ? 'selected' : '' }}>
                         {{ ucfirst($field) }}
                     </option>
@@ -21,31 +21,30 @@
             <input 
                 type="text" 
                 name="search" 
-                placeholder="Search products..." 
+                placeholder="Search categories..." 
                 value="{{ request('search') }}"
             >
             
             <button type="submit">Search</button>
             
             @if(request('search'))
-                <a href="{{ route('products.index') }}">Clear search</a>
+                <a href="{{ route('categories.index') }}">Clear search</a>
             @endif
         </div>
     </form>
-    @if($products->count() > 0)
-        @foreach ($products as $product)
     
-            <h2><a href="{{ route('products.show', $product->id) }}">{{ $product->name }}</a></h2>
-            <p>Category: {{ optional($product->category)->name ?? 'Uncategorized' }}</p>
-            <p>{{ $product->description }}</p>
-            <p>${{ $product->price }}</p>
+    @if($categories->count() > 0)
+        @foreach ($categories as $category)
+    
+            <h2><a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a></h2>
+            <p>{{ $category->description }}</p>
     
         @endforeach
     
-        {{ $products->links('vendor/pagination/bootstrap-4') }}
+        {{ $categories->links('vendor/pagination/simple-default') }}
     
     @else
-        <p>No products found.</p>
+        <p>No categories found.</p>
     @endif
     
     </x-layout>
