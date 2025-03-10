@@ -8,7 +8,7 @@
 
 <label for="price">Price</label>
 <input type="text" name="price" id="price" 
-value="${{ old('price', $product->price ?? '') }}">
+value="{{ old('price', $product->price ?? '') }}">
 
 <label for="category_id">Category</label>
 <select name="category_id" id="category_id">
