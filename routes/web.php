@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 
 Route::view('/', 'home')
     ->middleware('auth')
@@ -30,30 +31,34 @@ Route::middleware('auth')->group(function () {
     // php artisan route:list
     // TO SEE THE ROUTES OF CATEGORIES
 
-    Route::controller(ProductController::class)
-        ->prefix('products')
-        ->name('products.')
-        ->group(function () {
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('users', UserController::class);
+});
 
-            Route::get('/', [ProductController::class, 'index'])
-                ->name('index');
+Route::controller(ProductController::class)
+    ->prefix('products')
+    ->name('products.')
+    ->group(function () {
 
-            Route::get('/create', [ProductController::class, 'create'])
-                ->name('create');
+        Route::get('/', [ProductController::class, 'index'])
+            ->name('index');
 
-            Route::post('/store', [ProductController::class,  'store'])
-                ->name('store');
+        Route::get('/create', [ProductController::class, 'create'])
+            ->name('create');
 
-            Route::get('/{product}', [ProductController::class, 'show'])
-                ->name('show');
+        Route::post('/store', [ProductController::class,  'store'])
+            ->name('store');
 
-            Route::get('/{product}/edit', [ProductController::class, 'edit'])
-                ->name('edit');
+        Route::get('/{product}', [ProductController::class, 'show'])
+            ->name('show');
 
-            Route::patch('/{product}', [ProductController::class, 'update'])
-                ->name('update');
+        Route::get('/{product}/edit', [ProductController::class, 'edit'])
+            ->name('edit');
 
-            Route::delete('/{product}', [ProductController::class, 'destroy'])
-                ->name('destroy');
-        });
+        Route::patch('/{product}', [ProductController::class, 'update'])
+            ->name('update');
+
+        Route::delete('/{product}', [ProductController::class, 'destroy'])
+            ->name('destroy');
+    });
 });

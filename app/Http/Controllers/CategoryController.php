@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $query = Category::query();
@@ -38,12 +35,12 @@ class CategoryController extends Controller
 
         $categories->appends($request->only(['search', 'search_field']));
 
-        return view ('categories.index', compact('category'));
+        return view ('categories.index', compact('categories'));
     }
 
     public function create(Category $category)
     {
-        return view ('categories.create', compact('category'));
+        return view ('categories.create', compact('categories'));
     }
 
     public function store(SaveCategoryRequest $request)
@@ -61,22 +58,58 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        return view('categories.edit', compact('product'));
+        return view('categories.edit', compact('category'));
     }
 
     public function update(SaveCategoryRequest $request, Category $category)
     {
         $category->update($request->validated());
 
-        return redirect()->route('categories.show',$category)
+        return redirect()->route('categories.show', $category)
                          ->with('status', 'Category updated');
     }
 
-    public function destroy(Category $category)
+    public function destroy(Request $request, Category $category)
     {
-        $category->delete();
+    if ($category->products()->count() > 0 && !$request->has('action')) {
+        $otherCategories = Category::where('id', '!=', $category->id)->get();
+        return view('categories.confirm-delete', compact('category', 'otherCategories'));
+    }
+    
+    if ($request->has('action')) {
+        if ($request->action === 'cancel') {
+            return redirect()->route('categories.show', $category)
+                ->with('status', 'Deletion cancelled');
+        }
+        
+        switch ($request->action) {
+            case 'reassign':
+                if ($request->has('new_category_id')) {
+                    $newCategory = Category::findOrFail($request->new_category_id);
+                    $category->products()->update(['category_id' => $newCategory->id]);
+                } else {
+                    return redirect()->route('categories.show', $category)
+                        ->with('status', 'No category selected for reassignment');
+                }
+                break;
+                
+            case 'delete':
+                $category->products()->delete();
+                break;
+                
+            case 'orphan':
+                $category->products()->update(['category_id' => null]);
+                break;
+                
+            default:
+                return redirect()->route('categories.show', $category)
+                    ->with('status', 'Invalid action selected');
+        }
+    }
+    
+    $category->delete();
 
-        return redirect()->route('categories.index')
-                         ->with('status', 'Category Deleted');
+    return redirect()->route('categories.index')
+        ->with('status', 'Category deleted successfully');
     }
 }
