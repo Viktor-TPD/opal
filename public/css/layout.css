@@ -1,19 +1,32 @@
+:root {
+    --button-color: #3b82f6;
+    --background-color: #202b38;
+}
+
 body {
     max-width: 100%;
     margin: 0;
     padding: 0;
+    background-color: #2e3e51;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(29, 40, 90);
+    background-color: var(--background-color);
     padding: 20px;
 }
 
-nav h1 {
+nav h1,
+nav button {
     margin: 0;
+}
+
+nav h1 a:hover,
+nav h1 a {
+    text-decoration: none;
+    color: white;
 }
 
 nav span {
@@ -27,18 +40,90 @@ nav .authenticated {
     align-items: center;
 }
 
-main {
+.homeContainer,
+.productEditContainer {
     padding: 20px;
 }
 
 .linkButton {
     width: 100px;
     height: 50px;
-    padding: 10px;
+    padding: 10px 30px 10px 30px;
     border-radius: 5px;
-    background: rgb(11, 14, 27);
+    background: rgb(14, 18, 34);
     border: none;
     color: white;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.linkButton:hover {
+    text-decoration: none;
+    background-color: rgb(56, 66, 104);
+}
+
+.loginContainer,
+.registerContainer {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.loginContainer h2,
+.registerContainer h2 {
+    font-size: 2em;
+}
+
+.loginContainer label,
+.registerContainer label,
+.editContainer label,
+input,
+select {
+    font-size: 1.5em;
+}
+
+.loginContainer input,
+.registerContainer input {
+    width: 100%;
+    background-color: rgb(28, 34, 47);
+}
+
+.loginContainer button:hover,
+.registerContainer button:hover {
+    background-color: rgb(69, 77, 106);
+}
+
+.editContainer {
+    width: 100%;
+}
+
+.editContainer input,
+.editContainer textarea,
+.editContainer select {
+    width: 50%;
+    max-width: 50%;
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.editContainer textarea {
+    padding: 10px;
+}
+
+.editContainer input,
+.editContainer select {
+    padding: 10px 10px 10px 10px;
+}
+
+.editContainer button,
+.editContainer select {
+    margin-bottom: 16px;
+}
+
+.editContainer button {
+    width: 185px;
+    background-color: var(--button-color);
 }
