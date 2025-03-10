@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory(8)->create();
-        Category::factory(10)->create();
+        Category::factory(25)->create();
         Product::factory(100)->create();
     }
 }

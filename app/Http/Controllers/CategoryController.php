@@ -30,8 +30,7 @@ class CategoryController extends Controller
             }
         }
 
-        //WATCH OUT FOR HARD-CODED VALUE HERE @todo
-        $categories = $query->orderBy('created_at')->paginate(3);
+        $categories = $query->orderBy('created_at')->paginate(10);
 
         $categories->appends($request->only(['search', 'search_field']));
 
@@ -40,7 +39,7 @@ class CategoryController extends Controller
 
     public function create(Category $category)
     {
-        return view ('categories.create', compact('categories'));
+        return view ('categories.create', compact('category'));
     }
 
     public function store(SaveCategoryRequest $request)

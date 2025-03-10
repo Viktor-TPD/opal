@@ -2,6 +2,8 @@
 
     <h1>Users</h1>
     
+    <a href="{{ route('home')}}">Home</a>
+
     <a href="{{ route('users.create') }}">New User</a>
     
     <form action="{{ route('users.index') }}" method="GET" class="search-form">
