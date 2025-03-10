@@ -1,9 +1,7 @@
-<header>
     <nav>
-        <h1>Opal</h1>
-
+        <a href="{{ route('home') }}">Opal</a>
         @guest
-        <div>
+       <div>
             <a href="{{ route('show.login') }}">Login</a>
             <a href="{{ route('show.register') }}">Register</a>
         </div>
@@ -19,4 +17,3 @@
         </div>
         @endauth
     </nav>
-</header>
