@@ -2,6 +2,7 @@
     display: flex;
     background-color: #f7f7f7;
     min-height: 80%;
+    max-height: 80vh;
 }
 
 .index-sidebar {
@@ -25,6 +26,8 @@
 
 .dashboard-container {
     padding: 2rem;
+    min-height: 80%;
+    max-height: 80vh;
 }
 
 .dashboard-container h1,
@@ -223,13 +226,17 @@
 .image-container {
     display: flex;
     justify-content: right;
+    height: auto;
 }
 
 .image-container img {
     width: 20rem;
+    max-width: 200px;
     height: auto;
     opacity: 0.15;
     mix-blend-mode: multiply;
-    transform: rotate(12deg);
     filter: contrast(1.25) brightness(0.95);
+    position: absolute;
+    bottom: calc(140px - 2rem);
+    right: 0;
 }

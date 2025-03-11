@@ -33,10 +33,11 @@
                     </a>
                     @endif
                 </div>
+                <div class="image-container">
+                    <img src="{{ asset('images/opal.png') }}" alt="Opal Logo">
+                </div>
             </div>
-            <div class="image-container">
-                <img src="{{ asset('images/opal.png') }}" alt="Opal Logo">
-            </div>
+            
         </div>
     </section>
 </x-layout>
