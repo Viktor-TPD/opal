@@ -231,7 +231,7 @@
 
 .image-container img {
     width: 20rem;
-    max-width: 200px;
+    max-width: 270px;
     height: auto;
     opacity: 0.15;
     mix-blend-mode: multiply;
@@ -239,4 +239,11 @@
     position: absolute;
     bottom: calc(140px - 2rem);
     right: 0;
+}
+
+.option strong,
+.option p,
+.option label {
+    font-size: 1.25rem;
+    color: white;
 }

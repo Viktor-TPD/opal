@@ -1,0 +1,25 @@
+.warning {
+    background-color: #700000;
+    color: white;
+    border-radius: 1rem;
+    width: fit-content;
+    padding: 0.5rem 3.5rem;
+    max-width: 60%;
+}
+
+.warning strong,
+.warning p {
+    color: white;
+}
+
+.warning strong {
+    font-size: 1.25rem;
+}
+
+.hide-warning {
+    display: none;
+}
+
+#delete:checked ~ label .hide-warning {
+    display: block;
+}
