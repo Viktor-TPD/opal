@@ -5,10 +5,31 @@
 }
 
 .index-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     width: 25%;
     background-color: #ffffff;
     padding: 1.5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-content-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-sidebar {
+    justify-content: flex-start;
+}
+
+.dashboard-container {
+    padding: 2rem;
+}
+
+.dashboard-container h1,
+.dashboard-container h2 {
+    color: black;
 }
 
 .add-new-item {
@@ -16,10 +37,14 @@
 }
 
 .sidebar-title {
-    font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: #333;
+}
+
+.sidebar-top h1,
+.sidebar-top a {
+    font-size: 2rem;
 }
 
 .nav-link {
@@ -32,6 +57,17 @@
 
 .nav-link:hover {
     color: #1d4ed8;
+}
+
+.navbar-footer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.navbar-footer a {
+    font-size: 1.25rem;
 }
 
 .search-container {
@@ -81,15 +117,19 @@
 }
 
 .index-content {
+    padding: 0.25rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     flex: 1;
-    padding: 1.5rem;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .index-table-container {
     background-color: white;
     border-radius: 0.5rem;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .index-table {
@@ -99,9 +139,14 @@
 
 .index-table th,
 .index-table td {
+    font-size: 1.25rem;
     padding: 0.75rem 1rem;
     text-align: left;
     color: black;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .index-table th {
@@ -109,7 +154,7 @@
     font-weight: 500;
     color: #000000;
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 1.75rem;
     letter-spacing: 0.05em;
 }
 
@@ -131,6 +176,7 @@
 }
 
 .category-link {
+    font-size: 1.25rem;
     color: #3b82f6;
     text-decoration: none;
 }
@@ -172,4 +218,18 @@
 
 .pagination li:hover {
     background-color: rgb(231, 231, 231);
+}
+
+.image-container {
+    display: flex;
+    justify-content: right;
+}
+
+.image-container img {
+    width: 20rem;
+    height: auto;
+    opacity: 0.15;
+    mix-blend-mode: multiply;
+    transform: rotate(12deg);
+    filter: contrast(1.25) brightness(0.95);
 }
