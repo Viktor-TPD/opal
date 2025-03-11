@@ -50,6 +50,7 @@
                                 <th>Description</th>
                                 <th>Price</th>
                                 <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead> 
                         <tbody>
@@ -67,6 +68,18 @@
                                         <a href="{{ route('products.edit', $product->id) }}" class="category-link">
                                             Edit
                                         </a>
+                                    </td>
+                                    <td>
+                                        <form method="post" action="{{ route('products.destroy', $product) }}">
+
+                                            @csrf
+                                            @method('DELETE')
+                        
+                                            <button class="deleteButton delete-button-product-page">DELETE
+                                                <img class="trashIcon" src="{{ asset('images/trash.svg') }}">
+                                            </button>
+                        
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

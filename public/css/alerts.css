@@ -53,6 +53,10 @@
     margin: 0;
 }
 
+.error-user-form {
+    flex-direction: column;
+}
+
 .status p {
     margin: 0;
 }

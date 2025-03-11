@@ -167,6 +167,12 @@ select {
     align-items: center;
 }
 
+.delete-button-product-page {
+    margin: 0;
+    padding-left: 0.25rem;
+    background-color: #700000 !important;
+}
+
 .trashIcon {
     max-height: 25px;
 }
