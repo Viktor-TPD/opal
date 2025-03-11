@@ -15,7 +15,9 @@
                     @csrf
                     @method('DELETE')
 
-                    <button>DELETE</button>
+                    <button class="deleteButton">DELETE
+                        <img class="trashIcon" src="{{ asset('images/trash.svg') }}">
+                    </button>
 
                 </form>
 

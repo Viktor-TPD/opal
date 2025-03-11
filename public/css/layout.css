@@ -159,3 +159,13 @@ select {
 .showContainer .editContainer p {
     font-size: 1.25em;
 }
+
+.deleteButton {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.trashIcon {
+    max-height: 25px;
+}

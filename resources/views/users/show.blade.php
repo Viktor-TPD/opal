@@ -12,7 +12,9 @@
                 <form method="post" action="{{ route('users.destroy', $user) }}">
                     @csrf
                     @method('DELETE')
-                    <button onclick="return confirm('Are you sure you want to delete this user?')">DELETE</button>
+                    <button class="deleteButton" onclick="return confirm('Are you sure you want to delete this user?')">DELETE
+                        <img class="trashIcon" src="{{ asset('images/trash.svg') }}">
+                    </button>
                 </form>
 
                 <br>
