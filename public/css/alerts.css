@@ -1,5 +1,5 @@
 .warning {
-    background-color: #700000;
+    background-color: rgb(112, 0, 0);
     color: white;
     border-radius: 1rem;
     width: fit-content;
@@ -22,4 +22,30 @@
 
 #delete:checked ~ label .hide-warning {
     display: block;
+}
+
+.status {
+    background-color: #76e989;
+    color: rgb(0, 0, 0);
+    border-radius: 1rem;
+    width: fit-content;
+    padding: 0.5rem 3.5rem;
+    max-width: 60%;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5rem;
+}
+
+.error-container {
+    border-radius: 1rem;
+    width: fit-content;
+    padding: 0.5rem 3.5rem;
+    font-size: 1.5rem;
+    background-color: rgb(112, 0, 0);
+}
+
+.error-item {
+    color: rgb(255, 255, 255);
+    list-style-type: none;
 }
