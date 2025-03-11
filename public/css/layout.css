@@ -166,6 +166,7 @@ select {
     align-items: center;
 }
 
-.trashIcon {
+.trashIcon,
+.warningIcon {
     max-height: 25px;
 }
