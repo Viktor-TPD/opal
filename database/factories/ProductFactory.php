@@ -36,7 +36,7 @@ class ProductFactory extends Factory
         return [
             'name' => $name,
             'description' => fake()->paragraph(),
-            'price' => fake()->randomFloat(2, 1, 100),
+            'price' => fake()->numberBetween(1, 100) - 0.01,
             'created_at' => now(),
             'updated_at' => now(),
             'category_id' => $categoryId,
