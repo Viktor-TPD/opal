@@ -1,5 +1,5 @@
 <x-layout>
-    <article class="productEditContainer">
+    <article class="paddingContainer">
         <h1>Edit Product</h1>
 
         <x-errors />

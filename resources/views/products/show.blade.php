@@ -1,24 +1,26 @@
 <x-layout>
+    <article class="paddingContainer">
+        <article class="editContainer">
+            <h1>{{ $product->name }}</h1>
 
-<h1>{{  $product->name }}</h1>
+            <p>{{ $product->description }}</p>
 
-<p>{{ $product->description }}</p>
+            <p>Price: ${{ $product->price }}</p>
 
-<p>{{ $product->size }}</p>
+            <a class="linkButton" href=" {{ route('products.edit', $product->id) }}">Edit</a>
 
-<a href=" {{ route('products.edit', $product->id) }}">Edit</a>
+            <form method="post" action="{{ route('products.destroy', $product) }}">
 
-<form method="post" action="{{ route('products.destroy', $product) }}">
+                @csrf
+                @method('DELETE')
 
-    @csrf
-    @method('DELETE')
+                <button>DELETE</button>
 
-    <button>DELETE</button>
+            </form>
 
-</form>
+            <br>
 
-<br>
-
-<a href=" {{ route('products.index') }}">Back to Products</a>
-
+            <a class="linkButton" href=" {{ route('products.index') }}">Back to Products</a>
+        </article>
+    </article>
 </x-layout>
