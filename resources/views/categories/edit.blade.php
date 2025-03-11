@@ -1,6 +1,6 @@
 <x-layout>
     <article class="paddingContainer">
-        <h1>New Category</h1>
+        <h1>Edit</h1>
 
         <x-errors />
 

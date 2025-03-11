@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/alerts.css') }}">
 
 </head>
 
@@ -18,7 +19,7 @@
     <main>
 
         @if (session('status'))
-        <div>{{ session('status') }}</div>
+        <div class="status">{{ session('status') }}</div>
         @endif
 
         {{$slot}}
