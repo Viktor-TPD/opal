@@ -11,6 +11,7 @@
 
     @auth
     <div class="authenticated">
+        <img class="userIcon" src="{{ asset('images/user-icon.svg') }}">
         <span> {{ Auth::user()->name }} </span>
         <form action=" {{route('logout') }}" method=POST>
             @csrf

@@ -37,8 +37,22 @@ nav span {
 
 nav .authenticated {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
+    justify-content: end;
+    min-width: 300px;
+}
+
+nav .authenticated .userIcon {
+    max-height: 2em;
+}
+
+nav .authenticated span {
+    white-space: nowrap;
+}
+
+nav .authenticated button {
+    margin-left: 30px;
 }
 
 .homeContainer,
@@ -131,4 +145,17 @@ select {
 
 .editContainer button:hover {
     background-color: var(--button-color-hover);
+}
+
+.showContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.showContainer .editContainer {
+    width: 33%;
+}
+
+.showContainer .editContainer p {
+    font-size: 1.25em;
 }
