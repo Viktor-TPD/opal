@@ -35,6 +35,12 @@
     color: black;
 }
 
+.dashboard-container h1:hover,
+.dashboard-container h2:hover {
+    color: black;
+    text-decoration: none;
+}
+
 .add-new-item {
     width: 80%;
 }
@@ -110,13 +116,9 @@
     display: block;
     text-align: center;
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #000000;
     margin-top: 0.5rem;
     text-decoration: none;
-}
-
-.clear-search:hover {
-    color: #374151;
 }
 
 .index-content {

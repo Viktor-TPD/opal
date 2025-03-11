@@ -4,8 +4,11 @@
         <h1>Delete Category: {{ $category->name }}</h1>
         
         <div class="warning">
-            <p><strong>Warning:</strong> This category has {{ $category->products->count() }} associated products.</p>
-            <p>Please choose what you want to do with these products:</p>
+            <img class="warningIcon" src="{{ asset('images/warning.svg') }}">
+            <div> 
+                <p><strong>Warning:</strong> This category has {{ $category->products->count() }} associated products.</p>
+                <p>Please choose what you want to do with these products:</p>
+            </div>
         </div>
         
         <form method="post" action="{{ route('categories.destroy', $category) }}">
@@ -47,7 +50,10 @@
                     <input type="radio" id="delete" name="action" value="delete">
                     <label for="delete">
                         <strong>Delete all associated products</strong>
-                        <p class="warning hide-warning"><strong>Warning:</strong> This will permanently delete all products in this category.</p>
+                        <div class="hide-warning warning">
+                            <img class="warningIcon" src="{{ asset('images/warning.svg') }}">
+                            <p class=>This will permanently delete all products in this category.</p>
+                        </div>
                     </label>
                 </div>
                 

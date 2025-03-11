@@ -93,6 +93,7 @@ nav .authenticated button {
 input,
 select {
     font-size: 1.5em;
+    color: white;
 }
 
 .loginContainer input,
