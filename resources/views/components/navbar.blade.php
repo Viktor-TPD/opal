@@ -1,6 +1,10 @@
 <nav>
 
     <h1><a href="{{ route('home') }}">Opal</a></h1>
+    
+    @if (session('status'))
+        <div class="status">{{ session('status') }}</div>
+    @endif
 
     @guest
     <div>

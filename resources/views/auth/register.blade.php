@@ -35,9 +35,9 @@
 
             <!-- Validation Errors -->
             @if ($errors->any())
-            <ul>
+            <ul class="error-container">
                 @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li class="error-item">{{ $error }}</li>
                 @endforeach
             </ul>
             @endif

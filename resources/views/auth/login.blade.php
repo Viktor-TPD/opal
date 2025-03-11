@@ -22,10 +22,10 @@
 
             <!-- Validation Errors -->
             @if ($errors->any())
-            <ul>
+            <ul class="error-container">
                 <img class="warningIcon" src="{{ asset('images/warning.svg') }}">
                 @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li class="error-item">{{ $error }}</li>
                 @endforeach
             </ul>
             @endif
