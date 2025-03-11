@@ -37,7 +37,10 @@
             @if ($errors->any())
             <ul class="error-container">
                 @foreach ($errors->all() as $error)
-                <li class="error-item">{{ $error }}</li>
+                <div class="error-text-container">
+                    <img class="warningIcon" src="{{ asset('images/warning.svg') }}">
+                    <li class="error-item">{{ $error }}</li>
+                </div>
                 @endforeach
             </ul>
             @endif

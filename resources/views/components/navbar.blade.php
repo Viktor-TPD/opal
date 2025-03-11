@@ -1,9 +1,14 @@
 <nav>
 
     <h1><a href="{{ route('home') }}">Opal</a></h1>
-    
+
     @if (session('status'))
-        <div class="status">{{ session('status') }}</div>
+    <div class="status {{ session('status_type') }}">
+        @if (session('status_type')=='error-container')
+        <img class="crossIcon" src="{{ asset('images/cross.svg') }}">
+        @endif
+        <p>{{ session('status') }}</p>
+    </div>
     @endif
 
     @guest

@@ -11,7 +11,8 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!auth()->check() || auth()->user()->role !== 'admin') {
-            return redirect('/')->with('status', 'Access denied. Admin privileges required.');
+            return redirect('/')->with('status', 'Access denied. Admin privileges required.')
+                ->with('status_type', 'error-container');
         }
 
         return $next($request);
